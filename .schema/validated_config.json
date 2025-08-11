@@ -69,7 +69,7 @@
         "ghost_config": null
     },
     "data": {
-        "input_path": "C:\\Users\\user\\Desktop\\LAU\\Summer 2025\\Research\\DDmisID\\Data\\inputData\\Bc2D0MuNuX.root",
+        "input_path": "/mnt/c/users/user/Desktop/LAU/Summer2025/Research/DDmisID/Data/inputData/Bc2D0MuNuX.root",
         "data_key": "B2DMuNuX_D02KPi_FakeMuonTuple",
         "data_tree": "DecayTree",
         "data_prefixes": {
@@ -83,6 +83,6 @@
             "proton": "(Mu_plus_InMuonAcc==1.0) & (Mu_plus_NShared==0) & (Mu_plus_P>10000) & (Mu_plus_P<100000) & (Mu_plus_PT>1500) & (Mu_plus_PIDmu<-3.0) & (Mu_plus_isMuon==0) & (Mu_plus_hasMuon==1.0) & (Mu_plus_ProbNNghost<0.1) & (Mu_plus_PIDp>0.0) & ( (Mu_plus_PIDp-Mu_plus_PIDK)>0.0 ) & ( (Mu_plus_PIDp-Mu_plus_PIDe)>0.0 )",
             "electron": "(Mu_plus_InMuonAcc==1.0) & (Mu_plus_NShared==0) & (Mu_plus_P>10000) & (Mu_plus_P<100000) & (Mu_plus_PT>1500) & (Mu_plus_PIDmu<-3.0) & (Mu_plus_isMuon==0) & (Mu_plus_hasMuon==1.0) & (Mu_plus_ProbNNghost<0.1) & (Mu_plus_PIDe>0.0) & ( (Mu_plus_PIDe-Mu_plus_PIDK)>0.0 ) & ( (Mu_plus_PIDe-Mu_plus_PIDp)>0.0 )"
         },
-        "output_path": "/work/submit/blaised/DDmisID/misid_w/fakemuon_2018_MU.root"
+        "output_path": "/mnt/c/users/user/Desktop/LAU/Summer2025/Research/DDmisID/Data/outputData/fakemuon_2018_MU.root"
     }
 }

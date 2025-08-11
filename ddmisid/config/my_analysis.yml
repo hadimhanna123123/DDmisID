@@ -76,10 +76,10 @@ pid:
 data: 
   # file/directory/tree coordinates
   # ------------------------------ 
-  input_path: "C:\\Users\\user\\Desktop\\LAU\\Summer 2025\\Research\\DDmisID\\Data\\inputData\\Bc2D0MuNuX.root" # path to hadron-enriched data file (pid + intermediate selection applied)
+  input_path: "/mnt/c/users/user/Desktop/LAU/Summer2025/Research/DDmisID/Data/inputData/Bc2D0MuNuX.root" # path to hadron-enriched data file (pid + intermediate selection applied)
   data_key: "B2DMuNuX_D02KPi_FakeMuonTuple"
   data_tree: "DecayTree"
-  output_path: "C:\\Users\\user\\Desktop\\LAU\\Summer 2025\\Research\\DDmisID\\Data\\outputData\\fakemuon_2018_MU.root" # path to hadron-enriched data file (pid + intermediate selection applied)
+  output_path: "/mnt/c/users/user/Desktop/LAU/Summer2025/Research/DDmisID/Data/outputData/fakemuon_2018_MU.root" # path to hadron-enriched data file (pid + intermediate selection applied)
 
   # prefix for the bespoke single-track branches in the input ROOT file
   # -------------------------------------------------------------------

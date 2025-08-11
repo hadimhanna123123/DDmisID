@@ -12,6 +12,9 @@ Snakemake routine to orchestrate the requisite DDmisID stages:
 
 import shutil
 import os
+import sys
+
+
 from snakemake.io import glob_wildcards    
 import pyfiglet
 from ddmisid.engine import config
@@ -220,7 +223,8 @@ checkpoint discretize_data:
 
             # Save the histogram for the current bin combination, projecting out the reco category
             d.save_histogram(
-                hist=reco_h[*bin_combination,...],
+                # hist=reco_h[*bin_combination,...],
+                hist=reco_h[(*bin_combination, ...)],
                 path=f"scratch/obs/{bin_path}/obs.pkl",
             )
 

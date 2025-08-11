@@ -572,7 +572,7 @@ class Discretiser:
 Templates for binned ML fits are created based on reco partitions:
 
 ```python
-class TemplateFactory:
+class ory:
     """Factory for creating BinnedTemplate objects."""
     
     def register_species(self, species: str):

@@ -58,3 +58,7 @@ def _run_snakemake(snakemake_args):
         subprocess.run(cmd, check=True)
     except subprocess.CalledProcessError as e:
         raise
+
+
+# Load the config automatically so it's available to the Snakefile
+_load_validated_config()

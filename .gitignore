@@ -134,8 +134,8 @@ temp*
 *binning*
 *tmp*
 *lock*
-*scratch*
-*bin*
+# Temporarily allowing access to run scripts
+!scratch/bin/**/run.sh
 *dev*
 *done
 *kevin*

@@ -28,6 +28,8 @@ setup(
         "polars",
         "pydantic>=2.0.0",
         "pytest",
+        "xrootd",
+        "fsspec-xrootd"
         # "snakemake", # recommended install via mamba and running `pip install -e .` after loading mamba environment
     ],
     entry_points="""

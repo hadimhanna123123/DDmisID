@@ -8,7 +8,7 @@ from ddmisid.pid.species_strategy import ParticleStrategy, GhostStrategy
 from ddmisid.pid.base_job_generator import BaseJobGenerator
 from loguru import logger
 import os
-from config.calib_tuning import CalibSamples, MCTunings
+from ..config.calib_tuning import CalibSamples, MCTunings
 from ddmisid.utils.binning import DefaultBinningGenerator
 import re
 
@@ -29,13 +29,33 @@ class JobWriterMixin:
         output_dir: Path,
     ) -> str:
         """Construct the bash command for PID-efficiency extraction job execution."""
-        # Build the basic job command
-        job_conf = (
-            f"source /cvmfs/lhcb.cern.ch/lib/LbEnv &&\n"
-            f"lb-conda pidcalib pidcalib2.make_eff_hists --sample {calib_sample} "
-            f"--magnet {magpol} --particle {species_pidcalib_alias} --pid-cut '{pid_cut}' "
-            f"--cut '{common_selection}' --binning-file {binning_path} --output-dir {output_dir}"
-        )
+        # Local file path - adjust this to where you've downloaded the ROOT files
+        local_data_dir = "/path/to/local/pidcalib_data"  # Update this path
+        sample_file_map = {
+            'Electron18': f"{local_data_dir}/Turbo2018_B2KJpsiEE_MagUp.root",
+            # Add other samples as needed
+        }
+        
+        # Build the basic job command with timeout and local files
+        if calib_sample in sample_file_map:
+            # Use local file if available
+            local_file = sample_file_map[calib_sample]
+            job_conf = (
+                f"source /cvmfs/lhcb.cern.ch/lib/LbEnv &&\n"
+                f"timeout 1h lb-conda pidcalib pidcalib2.make_eff_hists "
+                f"--input-files {local_file} --magnet {magpol} --particle {species_pidcalib_alias} "
+                f"--pid-cut '{pid_cut}' --cut '{common_selection}' --binning-file {binning_path} "
+                f"--output-dir {output_dir}"
+            )
+        else:
+            # Fall back to downloading from EOS
+            job_conf = (
+                f"source /cvmfs/lhcb.cern.ch/lib/LbEnv &&\n"
+                f"timeout 1h lb-conda pidcalib pidcalib2.make_eff_hists --sample {calib_sample} "
+                f"--magnet {magpol} --particle {species_pidcalib_alias} --pid-cut '{pid_cut}' "
+                f"--cut '{common_selection}' --binning-file {binning_path} --output-dir {output_dir} "
+                f"--max-files {max_calib_files if max_calib_files > 0 else ''}"
+            )
 
         # Add binning variables
         for binning_var in binning_vars:
